@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 from pymessenger.bot import Bot
-
+import os
 app = Flask(__name__)
 ACCESS_TOKEN = 'EAAGGClLVUZAcBAHmHU4mRdSXtSMCZCXTVOrQrbZBqp9LJKRw0wjtr9EFec5NOaougDZBm3XIcb4iwd77sc9KXIDMFYG1e20J1lDFoObxgFafIsZAiLF93mDnaJlFyed3foquAB0UzXCZAQjPA6TznlrBHG3GvUHZBJEVcAZABeYYSVLZBGsrNHmY2'
 VERIFY_TOKEN = 'aaruchinu'
@@ -47,4 +47,6 @@ def send_message(recipient_id, response):
     return "success"
 
 if __name__ == '__main__':
-    app.run()
+    port=int(os.environ.get("PORT",5000))
+    app.run(host='0.0.0.0',port=port)
+    app.run(debug=True)
