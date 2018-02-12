@@ -1,1 +1,1 @@
-web:gunicorn PikuBot:app $PORT
+web: gunicorn PikuBot:app $PORT
