@@ -8,6 +8,5 @@ def get_jokes():
  result = soup.find_all('td')
  # for joke in result:
  #     print (joke.text,'\n')
-
  return random.choice(result).text
 
