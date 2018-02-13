@@ -21,10 +21,11 @@ def post_request_func():
             if message.get('message'):
                 # Facebook Messenger ID for user so we know where to send response back to
                 recipient_id = message['sender']['id']
-                txt=message['message'].get('text')
-                if txt=="/jokes":
+                msg=message['message'].get('text')
+                txt = msg.split(' ', 1)
+                if txt[0]=="/jokes":
                     response_sent_text =get_jokes()
-                elif txt[0]=="wiki":
+                elif txt[0]=="/wiki":
                     response_sent_text=get_wiki(txt[1])
                 else:
                     response_sent_text="hi"
