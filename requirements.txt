@@ -1,5 +1,6 @@
 pymessenger
 flask
 requests
+wikipedia
 beautifulsoup4
 gunicorn
