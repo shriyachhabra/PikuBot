@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 from pymessenger.bot import Bot
 import os
+from modules.jokes import *
 app = Flask(__name__)
 ACCESS_TOKEN = 'EAAGGClLVUZAcBAHmHU4mRdSXtSMCZCXTVOrQrbZBqp9LJKRw0wjtr9EFec5NOaougDZBm3XIcb4iwd77sc9KXIDMFYG1e20J1lDFoObxgFafIsZAiLF93mDnaJlFyed3foquAB0UzXCZAQjPA6TznlrBHG3GvUHZBJEVcAZABeYYSVLZBGsrNHmY2'
 VERIFY_TOKEN = 'aaruchinu'
@@ -19,13 +20,12 @@ def post_request_func():
             if message.get('message'):
                 # Facebook Messenger ID for user so we know where to send response back to
                 recipient_id = message['sender']['id']
-                if message['message'].get('text')=="hi aarnav":
-                    response_sent_text ="hi chinu"
-                    send_message(recipient_id, response_sent_text)
+                # response_sent_text=""
+                if message['message'].get('text')=="/jokes":
+                    response_sent_text =get_jokes()
                 else:
-                 response_sent_text="bye"
-                 send_message(recipient_id, response_sent_text)
-
+                    response_sent_text="hi"
+                send_message(recipient_id, response_sent_text)
 
     return "Message Processed"
 
