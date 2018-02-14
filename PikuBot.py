@@ -4,6 +4,7 @@ import os
 from modules.jokes import *
 from modules.wiki import *
 from modules.quotes import *
+from modules.start_convo import *
 import json
 from requests_toolbelt import MultipartEncoder
 
@@ -31,7 +32,10 @@ def post_request_func():
                 if txt[0]=="/jokes":
                     response_sent_text =get_jokes()
                 elif txt[0]=="/wiki":
-                    response_sent_text=get_wiki(txt[1])
+                    if(len(txt)!=1):
+                     response_sent_text=get_wiki(txt[1])
+                    else:
+                     response_sent_text="Follow the format:\n /wiki search_item"
                 elif txt[0]=="/quotes":
                     response_sent_text=get_quotes()
                 elif txt[0]=="/memes":
@@ -41,8 +45,14 @@ def post_request_func():
                     if resp == "done":
                         sendImg(recipient_id, path)
                         return "Message Processed"
-                else:
-                    response_sent_text="hi"
+                elif txt[0] in ["bye","goodbye"]:
+                    response_sent_text="Bye :)"
+                elif txt[0] in ["thanks","Thanks","wow","Aww","Nice","nice"]:
+                    response_sent_text=":D"
+                elif txt[0].lower=="aaru":
+                    response_sent_text="I love you my VALENTINE <3"
+                else :
+                    response_sent_text=start_conversation()
                 send_message(recipient_id, response_sent_text)
 
     return "Message Processed"
