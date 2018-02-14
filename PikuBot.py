@@ -11,7 +11,7 @@ ACCESS_TOKEN = 'EAAGGClLVUZAcBAHmHU4mRdSXtSMCZCXTVOrQrbZBqp9LJKRw0wjtr9EFec5NOao
 VERIFY_TOKEN = 'aaruchinu'
 bot = Bot(ACCESS_TOKEN)
 SRCDIR = os.path.dirname(os.path.abspath(__file__))
-
+flag=0
 @app.route('/',methods=['POST'])
 def post_request_func():
     # if the request was not get, it must be POST and we can just proceed with sending a message # back to user
@@ -37,9 +37,11 @@ def post_request_func():
                     resp = get_memes()
                     if resp == "done":
                         sendImg(recipient_id, path)
+                        flag=1;
                 else:
                     response_sent_text="hi"
-                send_message(recipient_id, response_sent_text)
+                if(flag!=1):
+                 send_message(recipient_id, response_sent_text)
 
     return "Message Processed"
 
@@ -87,7 +89,8 @@ def sendImg(recipient_id, image_path):
         'Content-Type': multipart_data.content_type
     }
 
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=multipart_header, data=multipart_data)
+    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params,
+                      headers=multipart_header, data=multipart_data)
     if r.status_code != 200:
         print(r.status_code)
         print(r.text)
