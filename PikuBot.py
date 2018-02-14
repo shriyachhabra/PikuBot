@@ -25,13 +25,14 @@ def post_request_func():
         messaging = event['messaging']
         for message in messaging:
             print (message)
-            if message['message'].get('attachments'):
-                response_sent_nontext = start_conversation()
-                send_message(recipient_id, response_sent_nontext)
-                return "non text response"
+
             if message.get('message'):
                 # Facebook Messenger ID for user so we know where to send response back to
                 recipient_id = message['sender']['id']
+                if message['message'].get('attachments'):
+                    response_sent_nontext = start_conversation()
+                    send_message(recipient_id, response_sent_nontext)
+                    return "non text response"
                 msg=message['message'].get('text')
                 txt = msg.split(' ', 1)
                 if txt[0]=="/jokes":
