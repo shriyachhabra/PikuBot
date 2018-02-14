@@ -3,6 +3,7 @@ from pymessenger.bot import Bot
 import os
 from modules.jokes import *
 from modules.wiki import *
+from modules.quotes import *
 import json
 from requests_toolbelt import MultipartEncoder
 
@@ -31,6 +32,8 @@ def post_request_func():
                     response_sent_text =get_jokes()
                 elif txt[0]=="/wiki":
                     response_sent_text=get_wiki(txt[1])
+                elif txt[0]=="/quotes":
+                    response_sent_text=get_quotes()
                 elif txt[0]=="/memes":
                     print(SRCDIR)
                     path = os.path.join(SRCDIR, 'meme.png')
