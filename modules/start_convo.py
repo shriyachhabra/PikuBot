@@ -1,7 +1,7 @@
 message="""
 Hi :D
 I am PikuBot.
-Here is what all I've got:
+Here is all what I've got:
 
 /jokes-to laugh hard(LOL)
 /quotes-to get inspired
