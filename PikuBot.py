@@ -49,7 +49,7 @@ def post_request_func():
                     response_sent_text="Bye :)"
                 elif txt[0] in ["thanks","Thanks","wow","Aww","Nice","nice"]:
                     response_sent_text=":D"
-                elif txt[0].lower=="aaru":
+                elif txt[0].lower()=="aaru":
                     response_sent_text="I love you my VALENTINE <3"
                 else :
                     response_sent_text=start_conversation()
