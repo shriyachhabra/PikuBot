@@ -11,7 +11,7 @@ ACCESS_TOKEN = 'EAAGGClLVUZAcBAHmHU4mRdSXtSMCZCXTVOrQrbZBqp9LJKRw0wjtr9EFec5NOao
 VERIFY_TOKEN = 'aaruchinu'
 bot = Bot(ACCESS_TOKEN)
 SRCDIR = os.path.dirname(os.path.abspath(__file__))
-flag=0
+
 @app.route('/',methods=['POST'])
 def post_request_func():
     # if the request was not get, it must be POST and we can just proceed with sending a message # back to user
@@ -37,11 +37,10 @@ def post_request_func():
                     resp = get_memes()
                     if resp == "done":
                         sendImg(recipient_id, path)
-                        flag=1;
+                        return "Message Processed"
                 else:
                     response_sent_text="hi"
-                if(flag!=1):
-                 send_message(recipient_id, response_sent_text)
+                send_message(recipient_id, response_sent_text)
 
     return "Message Processed"
 
