@@ -55,6 +55,9 @@ def post_request_func():
                 else :
                     response_sent_text=start_conversation()
                 send_message(recipient_id, response_sent_text)
+                if message['message'].get('attachments'):
+                    response_sent_nontext = start_conversation()
+                    send_message(recipient_id, response_sent_nontext)
 
     return "Message Processed"
 
