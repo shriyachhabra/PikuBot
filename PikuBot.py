@@ -57,6 +57,8 @@ def post_request_func():
                     response_sent_text=":D"
                 elif txt[0].lower()=="aaru":
                     response_sent_text="I love you my VALENTINE <3"
+                elif txt[0].lower()=="meghu":
+                    response_sent_text="I love you Bestie!!!! <3 <3"
                 else :
                     response_sent_text=start_conversation()
                 send_message(recipient_id, response_sent_text)
